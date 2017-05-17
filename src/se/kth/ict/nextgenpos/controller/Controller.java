@@ -40,6 +40,7 @@ public class Controller {
      * @param itemId         An identifier for the item that is entered.
      * @param quantity       The quantity of items to be entered.
      * @return               Information about the entered item.
+     * @throws IllegalItemIdException if an IllegalArgument Exception is caught.
      * @throws IllegalStateException If this method is called before makeNewSale().
      */
     public ProductSpecification enterItem(int itemId, int quantity) throws IllegalItemIdException {
@@ -79,6 +80,10 @@ public class Controller {
     public Receipt makePayment(int payedAmount) {
 	return sale.createReceipt(payedAmount);
     }
+    /**
+     * calls sale to add an observer
+     * @param observer an observer
+     */
     public void addSaleObserver(Observer observer){
         sale.addObserver(observer);
     }

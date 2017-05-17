@@ -26,8 +26,8 @@ public class ProductCatalog {
      * Search for an item in the product catalog.
      *
      * @param    itemId The item to look for
+     * @throws IllegalArgumentException when no items is found
      * @return  spec The specification for the found item or null if no item was found.
-    
      */
     public ProductSpecification findSpecification(int itemId) {
 	    

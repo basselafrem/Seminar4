@@ -34,11 +34,15 @@ public class Sale {
     }
     /**
      * adding an observer for products registration
-     * @param observer 
+     * @param observer an observer
      */
     public void addObserver(Observer observer){
         observers.add(observer);
     }
+    /**
+     *  calling notify observer in the class someObserver
+     * @param spec the added product specifications
+     */
     public void notifyObservers(ProductSpecification spec){
         observers.forEach((observer) -> {
             observer.notify(spec);

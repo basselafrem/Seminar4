@@ -15,6 +15,7 @@ public class View {
     /**
      * Creates a new <code>View</code>.
      * @param cont           The controller of the application.
+     * @param obs   some observer of the application
      */
     public View(Controller cont) {
 	this.cont = cont;
