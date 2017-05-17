@@ -32,6 +32,18 @@ public class Sale {
 	addToTotal(lineItem);
         notifyObservers(spec);
     }
+    /**
+     * adding an observer for products registration
+     * @param observer 
+     */
+    public void addObserver(Observer observer){
+        observers.add(observer);
+    }
+    public void notifyObservers(ProductSpecification spec){
+        observers.forEach((observer) -> {
+            observer.notify(spec);
+        });
+    }
 
     private void addToTotal(SalesLineItem lineItem) {
 	currentTotal = 
@@ -72,17 +84,6 @@ public class Sale {
     int getPayedAmount() {
 	return payedAmount;
     }
-    /**
-     * adding an observer for products registration
-     * @param observer 
-     */
-    public void addObserver(Observer observer){
-        observers.add(observer);
-    }
-    public void notifyObservers(ProductSpecification spec){
-        observers.forEach((observer) -> {
-            observer.notify(spec);
-        });
-    }
+    
     
 }
