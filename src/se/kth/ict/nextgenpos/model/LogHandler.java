@@ -32,7 +32,7 @@ import java.time.format.FormatStyle;
     public void logException(Exception exception) {
  StringBuilder logMsgBuilder = new StringBuilder();
  logMsgBuilder.append(createTime());
- logMsgBuilder.append(", Exception was thrown: ");
+ logMsgBuilder.append("Product Not Found ");
  logMsgBuilder.append(exception.getMessage());
  logFile.println(logMsgBuilder);
  exception.printStackTrace(logFile);

@@ -7,6 +7,7 @@ import se.kth.ict.nextgenpos.model.Sale;
 import se.kth.ict.nextgenpos.model.Receipt;
 import se.kth.ict.nextgenpos.model.ProductCatalog;
 import se.kth.ict.nextgenpos.model.ProductSpecification;
+import se.kth.ict.nextgenpos.view.ErrorMessageHandler;
 
 /**
  * The controller of the application. This is the sole controller, all calls to the
@@ -16,6 +17,7 @@ public class Controller {
     private Sale sale;
     private ProductCatalog catalog;
     private LogHandler logger;
+    private ErrorMessageHandler errorMsgHandler;
 
     /**
      * Instantiates a new <code>Controller</code>.
@@ -56,7 +58,7 @@ public class Controller {
         }
         catch(IllegalArgumentException iae){
             throw new IllegalItemIdException("The item you have entered not found: "+ itemId, iae);
-            //logger.logException(iae);
+          
         }
     }
 

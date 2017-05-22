@@ -13,6 +13,7 @@ public class View {
     private Controller cont;
     private Observer obs;
     private LogHandler logger;
+    private ErrorMessageHandler errorMsgHandler;
 
     /**
      * Creates a new <code>View</code>.
@@ -34,8 +35,10 @@ public class View {
     try {
         enterItem(i);
     } catch (IllegalItemIdException iae) {
-        System.out.println(iae.getMessage());
-        logger.logException(iae);
+        //System.out.println(iae.getMessage());
+        //logger.logException(iae);
+        //errorMsgHandler.showErrorMsg("Product Not Found");
+        errorMsgHandler.showErrorMsg(iae.getMessage() + " Product Not Found.");
     }
 }
     }
@@ -46,4 +49,15 @@ public class View {
 	System.out.println("Result for item " + itemId + ": " + cont.enterItem(itemId, quantity));
 	System.out.println("");
     }
+    /**
+     *Takes care of all the exceptions so they will be printed and logged.
+     *
+     * @param msg The message of why there was an exception
+     * @param e the exception that occurred
+     */
+    private void exceptionHandler(String msg, Exception e){
+        errorMsgHandler.showErrorMsg(msg);
+        logger.logException(e);
+
+}
 }
