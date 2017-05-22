@@ -2,6 +2,7 @@ package se.kth.ict.nextgenpos.view;
 
 import se.kth.ict.nextgenpos.controller.Controller;
 import se.kth.ict.nextgenpos.model.IllegalItemIdException;
+import se.kth.ict.nextgenpos.model.LogHandler;
 import se.kth.ict.nextgenpos.model.Observer;
 
 
@@ -11,6 +12,7 @@ import se.kth.ict.nextgenpos.model.Observer;
 public class View {
     private Controller cont;
     private Observer obs;
+    private LogHandler logger;
 
     /**
      * Creates a new <code>View</code>.
@@ -33,6 +35,7 @@ public class View {
         enterItem(i);
     } catch (IllegalItemIdException iae) {
         System.out.println(iae.getMessage());
+        logger.logException(iae);
     }
 }
     }
