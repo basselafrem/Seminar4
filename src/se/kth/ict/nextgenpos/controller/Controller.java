@@ -1,6 +1,7 @@
 package se.kth.ict.nextgenpos.controller;
 
 import se.kth.ict.nextgenpos.model.IllegalItemIdException;
+import se.kth.ict.nextgenpos.model.LogHandler;
 import se.kth.ict.nextgenpos.model.Observer;
 import se.kth.ict.nextgenpos.model.Sale;
 import se.kth.ict.nextgenpos.model.Receipt;
@@ -14,6 +15,7 @@ import se.kth.ict.nextgenpos.model.ProductSpecification;
 public class Controller {
     private Sale sale;
     private ProductCatalog catalog;
+    private LogHandler logger;
 
     /**
      * Instantiates a new <code>Controller</code>.
@@ -54,6 +56,7 @@ public class Controller {
         }
         catch(IllegalArgumentException iae){
             throw new IllegalItemIdException("The item you have entered not found: "+ itemId, iae);
+            //logger.logException(iae);
         }
     }
 
