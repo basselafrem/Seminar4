@@ -1,5 +1,6 @@
 package se.kth.ict.nextgenpos.view;
 
+import java.io.IOException;
 import se.kth.ict.nextgenpos.controller.Controller;
 import se.kth.ict.nextgenpos.model.IllegalItemIdException;
 import se.kth.ict.nextgenpos.model.LogHandler;
@@ -13,16 +14,17 @@ public class View {
     private Controller cont;
     private Observer obs;
     private LogHandler logger;
-    private ErrorMessageHandler errorMsgHandler;
+    private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
 
     /**
      * Creates a new <code>View</code>.
      * @param cont           The controller of the application.
      * @param obs   some observer of the application
      */
-    public View(Controller cont) {
+    public View(Controller cont) throws IOException {
 	this.cont = cont;
         this.obs = new SomeObserver();
+        this.logger = new LogHandler();
     }
 
     /**
@@ -35,10 +37,9 @@ public class View {
     try {
         enterItem(i);
     } catch (IllegalItemIdException iae) {
-        //System.out.println(iae.getMessage());
-        //logger.logException(iae);
-        //errorMsgHandler.showErrorMsg("Product Not Found");
-        errorMsgHandler.showErrorMsg(iae.getMessage() + " Product Not Found.");
+       
+        exceptionHandler("No Product Found",iae);
+        
     }
 }
     }

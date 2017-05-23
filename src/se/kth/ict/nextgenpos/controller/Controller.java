@@ -57,7 +57,7 @@ public class Controller {
 	return spec;
         }
         catch(IllegalArgumentException iae){
-            throw new IllegalItemIdException("The item you have entered not found: "+ itemId, iae);
+            throw new IllegalItemIdException("No product found "+ itemId, iae);
           
         }
     }

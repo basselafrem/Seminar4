@@ -8,6 +8,7 @@ package se.kth.ict.nextgenpos.view;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Date;
 
 /**
  *
@@ -21,18 +22,9 @@ public class ErrorMessageHandler {
  * @param msg The error message.
  */
  void showErrorMsg(String msg) {
-     StringBuilder errorMsgBuilder = new StringBuilder();
-     errorMsgBuilder.append(createTime());
-     errorMsgBuilder.append(", ERROR ");
-     errorMsgBuilder.append(msg);
-     System.out.println(errorMsgBuilder);
- }
+     Date date = new Date();
+     System.out.println(date + ", Error: " + msg);;
+     }
 
- private String createTime() {
-     LocalDateTime now = LocalDateTime.now();
-     DateTimeFormatter formatter = DateTimeFormatter.
-     ofLocalizedDateTime(FormatStyle.MEDIUM);
-     
-     return now.format(formatter);
- }
+
  }
